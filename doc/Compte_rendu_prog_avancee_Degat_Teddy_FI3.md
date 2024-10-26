@@ -5,11 +5,13 @@ Programmation Répartie
 
 Contexte:
 
-Le but de ce compte-rendu est de réécrire le cours, commenter les TPs et ajouter mes propres raisonnements afin de relire et de m’améliorer plus tard. Il y aura dans un premier temps les définitions et toute la partie cours, puis ensuite, la partie TP qui inclura les difficultés que j’ai rencontré et mon cheminement dans mon raisonnement.
+Le but de ce compte-rendu est de réécrire le cours, de commenter les TPs et d'ajouter mes propres raisonnements pour pouvoir relire et m’améliorer plus tard. Dans un premier temps, il comprendra les définitions et toute la partie cours, puis ensuite la partie TP, qui inclura les difficultés que j’ai rencontrées et mon cheminement dans mon raisonnement.
+
 
 Définitions:
 
-Un *Thread* est un processus léger se trouvant dans le processeur de l’ordinateur, il permet de réaliser des tâches (lignes, blocs de code) qui lui sont assignées. Un thread a son propre environnement et sa pile, il possède également une mémoire partagée avec les autres threads.
+Un *Thread* est un processus léger situé dans le processeur de l’ordinateur, permettant d’effectuer plusieurs tâches en parallèle.
+
 
 ![](img1.jpeg)
 
@@ -17,7 +19,12 @@ Un *Thread* est un processus léger se trouvant dans le processeur de l’ordina
 
 Les threads ont pour particularité de posséder plusieurs états commandités par l’OS, un état “en cours d’exécution” où le thread réalise sa tâche, un état “prêt à l’exécution” où le thread est prêt à démarrer sa tâche, un état “en attente” où le thread attend une tâche, dans cet état, il ne consomme aucune ressource.
 
-Le *Multithreading* est l’action de partager un programme à réaliser avec plusieurs threads.
+Le *Multithreading* est une technique permettant d’utiliser plusieurs threads au sein d’un même processus pour optimiser l’utilisation du processeur. Le multithreading permet d’exécuter plusieurs tâches en parallèle. Cependant, cela peut entraîner des problèmes de concurrence, car plusieurs threads peuvent accéder aux mêmes données simultanément et les modifier de manière incohérente. Pour éviter ces problèmes, on utilise des verrous (ou locks), qui empêchent plusieurs threads d’accéder aux mêmes données simultanément.
+
+
+
+
+
 
 ![](img2.jpeg)
 
@@ -51,6 +58,11 @@ Dans un modèle *read* et *write* respectivement *Consumer* et *Producer*, on a 
 
 *Diagramme UML du cours trouvable à la page 22*
 
+Une *Architecture Hétérogène* est une architecture où différents processeurs sont utilisés ensemble, c'est le cas par exemple de la SAé des Raspberry, sur lequel nous avons Un noeud à 4 coeurs distribués (pi Zéro), et l'ensemble est à mémoire partagée avec le Raspberry 4, c'est un hardware hétérogène.
+
+Mémoire distribuée ou partagée? La mémoire distribuée se fait si la mémoire est répartie entre plusieurs noeuds, où chaque processeur ne possède l'accès qu'au noeud dans lequel il se trouve. La mémoire partagée quant à elle, permet une zone mémoire commune, accessible à tous les processeurs.
+
+
 Le déroulement des TPs:
 
 TP1- Réalisation de mobiles:
@@ -62,6 +74,8 @@ Un mobile est un carré bougeant de gauche à droite, il peut y en avoir plusieu
 *Déroulement des mobiles*
 
 Ces deux mobiles vont de gauche à droite, à une vitesse différente.
+
+Nous avons modélisé les états des threads avec ces mobiles, notamment grâce aux méthodes suspend() et sleep()
 
 TP2- Les sémaphores:
 
@@ -87,3 +101,19 @@ Où le producteur dépose une lettre, et le consommateur la retire. Il n’y a r
 
 [ref1]: img3.jpeg
 [ref2]: img4.png
+
+
+TP3- La boulangerie:
+
+à partir de ce cours, nous avons réalisé une application faite de la même façon que la boîte aux lettres mais ayant pour thème une boulangerie, le programme a été réalisé différemment, en utilisant par exemple l'API concurrent.
+http://blog.paumard.org/cours/java-api/
+
+https://docs.oracle.com/javase/8/docs/api/?java/util/concurrent/BlockingQueue.html
+*Lien de la documentation Oracle sur BlockingQueue*
+
+L'api concurrent permet d'utiliser l'interface Runnable et de façon plus globale, de mettre des verrous sur des données quand un thread l'utilise déjà.
+
+
+
+
+*La version 4o de Chat GPT a été utilisée pour corriger les fautes d'orthographe et de grammaire.*
